@@ -16,16 +16,12 @@ export default function AvailableCats() {
   const [filteredCats, setFilteredCats] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const uniqueBreeds = ['All', ...new Set(availableCats.map((cat) => cat.breed))];
+  const uniqueBreeds = ['All Breed', ...new Set(availableCats.map((cat) => cat.breed))];
 
   useEffect(() => {
     const fetchCatImages = async () => {
-      try{
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())
-          )
-        );
+      try {
+        const responses = await Promise.all(availableCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())));
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
           image: responses[index][0]?.url || 'https://via.placeholder.com/300?text=No+Image',
@@ -46,9 +42,7 @@ export default function AvailableCats() {
     let filtered = cats;
 
     if (searchTerm) {
-      filtered = filtered.filter((cat) =>
-        cat.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      filtered = filtered.filter((cat) => cat.name.toLowerCase().includes(searchTerm.toLowerCase()));
     }
 
     if (selectedBreed !== 'All') {
@@ -65,20 +59,8 @@ export default function AvailableCats() {
 
       {/* Filters */}
       <div className="filters d-flex justify-content-center align-items-center mb-4">
-        <input
-          type="text"
-          className="form-control me-3"
-          placeholder="Search by name..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ maxWidth: '300px' }}
-        />
-        <select
-          className="form-select"
-          value={selectedBreed}
-          onChange={(e) => setSelectedBreed(e.target.value)}
-          style={{ maxWidth: '200px' }}
-        >
+        <input type="text" className="form-control me-3" placeholder="Search by name..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={{ maxWidth: '300px' }} />
+        <select className="form-select" value={selectedBreed} onChange={(e) => setSelectedBreed(e.target.value)} style={{ maxWidth: '200px' }}>
           {uniqueBreeds.map((breed) => (
             <option key={breed} value={breed}>
               {breed}
@@ -86,7 +68,7 @@ export default function AvailableCats() {
           ))}
         </select>
       </div>
-
+      <hr />
       {/* Loading State */}
       {loading ? (
         <p>Loading cats...</p>

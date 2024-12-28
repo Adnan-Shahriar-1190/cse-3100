@@ -1,0 +1,72 @@
+/* General container styles */
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Soft background color */
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.team-member {
+  border: 1px solid blueviolet;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1 1 calc(33.333% - 1.5rem);
+  max-width: 250px;
+  min-height: 300px;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto 1rem;
+  display: block;
+  border: 2px solid #ecf0f1;
+}
+
+.member-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+.member-role {
+  font-size: 1rem;
+  color: #8e44ad;
+}
